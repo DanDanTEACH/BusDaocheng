@@ -35,9 +35,9 @@ try {
         & $keytool -genkeypair -keystore build\local-debug.p12 -storetype PKCS12 -alias androiddebugkey -storepass android -keypass android -dname 'CN=Android Debug' -keyalg RSA -keysize 2048 -validity 10000 -noprompt
         Check-Exit
     }
-    & $java -jar "$tools\lib\apksigner.jar" sign --ks build\local-debug.p12 --ks-key-alias androiddebugkey --ks-pass pass:android --key-pass pass:android --out build\Bus-Announcement-Guide-V2.0-debug.apk build\aligned.apk
+    & $java -jar "$tools\lib\apksigner.jar" sign --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true --ks build\local-debug.p12 --ks-key-alias androiddebugkey --ks-pass pass:android --key-pass pass:android --out build\Bus-Announcement-Guide-V2.0-debug.apk build\aligned.apk
     Check-Exit
-    & $java -jar "$tools\lib\apksigner.jar" verify build\Bus-Announcement-Guide-V2.0-debug.apk
+    & $java -jar "$tools\lib\apksigner.jar" verify --verbose --min-sdk-version 23 build\Bus-Announcement-Guide-V2.0-debug.apk
     Check-Exit
     Write-Output (Join-Path $PSScriptRoot 'build\Bus-Announcement-Guide-V2.0-debug.apk')
 } finally { Pop-Location }
