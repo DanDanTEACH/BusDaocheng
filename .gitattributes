@@ -1,0 +1,13 @@
+# Count application source as the project's primary language.
+android/src/** linguist-vendored=false linguist-generated=false
+
+# Website files are documentation for the Android application.
+index.html linguist-documentation=true
+style.css linguist-documentation=true
+
+# Bundled media, route data and APK downloads are not application source.
+android/assets/** linguist-vendored=true
+android/res/** linguist-vendored=true
+assets/** linguist-vendored=true
+downloads/** linguist-vendored=true
+*.apk linguist-generated=true
