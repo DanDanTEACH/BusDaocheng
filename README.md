@@ -15,7 +15,7 @@
 
 適用 **Android 8.0 以上**的手機。
 
-**[點此下載 V2.0 安裝檔](https://github.com/DanDanTEACH/desktop-tutorial/releases/download/v2.0/Bus-Announcement-Guide-V2.0.apk)**
+**[點此下載 V2.0 安裝檔](https://github.com/DanDanTEACH/BusDaocheng/releases/download/v2.0/Bus-Announcement-Guide-V2.0.apk)**
 
 下載後，在手機上開啟檔案，依畫面提示完成安裝。
 
