@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.led.demo.phone" android:versionCode="40" android:versionName="V2.0">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.led.demo.phone" android:versionCode="41" android:versionName="V2.0">
  <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="35"/>
  <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/><uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"/><uses-permission android:name="android.permission.WAKE_LOCK"/><application android:label="公車報站&amp;導乘" android:icon="@drawable/logo" android:theme="@android:style/Theme.Material.NoActionBar" android:allowBackup="false" android:supportsRtl="true">
  <activity android:hardwareAccelerated="false" android:name="com.led.phone.PhoneActivity" android:exported="true" android:configChanges="orientation|screenSize|keyboardHidden" android:windowSoftInputMode="adjustResize">
