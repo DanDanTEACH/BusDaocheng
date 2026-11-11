@@ -1,5 +1,63 @@
-# Welcome to GitHub Desktop!
+# 公車報站&導乘
 
-This is your README. READMEs are where you can communicate what your project is and how to use it.
+**V2.0｜將公車到站顯示與站名播報帶進 Android 手機。**
 
-Write your name on line 6, save it, and then head back to GitHub Desktop.
+選擇路線與方向，即可開始顯示站名，透過手動切站或自動播報，體驗車內到站顯示、四語報站、路線圖與下車鈴。
+
+[下載 V2.0 APK](https://github.com/DanDanTEACH/desktop-tutorial/releases/download/v2.0/Bus-Announcement-Guide-V2.0.apk) · [查看版本介紹](https://github.com/DanDanTEACH/desktop-tutorial/releases/tag/v2.0)
+
+![公車報站&導乘播放畫面](assets/playback.png)
+
+## V2.0 功能
+
+| 分頁 | 功能 |
+| --- | --- |
+| 播放 | 選擇路線、方向，顯示動畫站名；提供上一站、下一站、自動播報／停止操作。 |
+| 路線圖 | 依分類與關鍵字查找路線圖，支援放大與移動查看。 |
+| 設備 | 一般下車鈴、卡農下車鈴、停車指示器，以及可獨立選擇路線與方向的對外廣播。 |
+| 設定 | 播放時鐘與秒數、播放主題、音檔選項、自動播放間隔，以及應用程式主題、強調色與自訂背景照片。 |
+
+- **45 條路線**：依一般數字路線、小型路線、捷運接駁路線及其他分類。
+- **四語播報**：按下一站後，依序播放「下一站」、中文、台語、客家語及英語錄音；播報期間鎖定切站，避免重複操作。
+- **自動播報**：可設定每站錄音結束後的等待秒數；遇到缺少錄音的站點仍繼續切站。
+- **桌面小工具**：顯示目前站名，提供上一站、下一站及自動播報／停止按鈕。
+- **Material Design 3 風格介面與動畫**：播放畫面保留車內到站顯示風格，其餘主要頁面採用統一的介面設計。
+- **系統動態強調色**：Android 12 以上可選擇「跟隨系統」。
+
+## 下載與安裝
+
+系統需求：**Android 8.0 以上**。
+
+1. 前往 [Releases](https://github.com/DanDanTEACH/desktop-tutorial/releases/latest)。
+2. 下載 **Bus-Announcement-Guide-V2.0.apk**，並在 Android 手機上開啟安裝檔。
+3. 依手機提示完成安裝，開啟「公車報站&導乘」。
+
+安裝 APP 請選擇 `.apk` 檔案；`Source code (zip)` 與 `Source code (tar.gz)` 是 GitHub 產生的儲存庫壓縮檔。
+
+## 開始使用
+
+1. 在「播放」頁選擇分類、路線與方向，按下「確認」。
+2. 使用「上一站／下一站」切換站名；按下一站時會播放對應站名錄音。
+3. 啟動「自動播報」後自動切站，需要暫停時按「停止」。
+4. 在「設定 → 音檔與自動播放」調整每站播報結束後的等待秒數。
+5. 需要查看路線圖或使用下車鈴與對外廣播時，返回選路線頁，再切換至對應分頁。
+
+## 音檔與路線資料
+
+- 目前使用立皓站名錄音，寶錄音檔選項尚未啟用。
+- 部分站點或路線方向尚未提供錄音／對外廣播音檔，功能依現有資料提供。
+- 匯入的路線圖可能與現行站序不同；實際乘車資訊請以營運單位公告為準。
+
+## 儲存庫內容
+
+此儲存庫目前存放 **APP 介紹網站與 APK 下載檔案**，未包含 Android APP 原始碼。
+
+| 路徑 | 內容 |
+| --- | --- |
+| `index.html` | 介紹網站首頁 |
+| `style.css` | 網站樣式與響應式版面 |
+| `assets/` | 圖示與播放畫面截圖 |
+| `downloads/` | APK 安裝檔 |
+| `WEBSITE.md` | 網站檔案與更新說明 |
+
+網站提供功能介紹與下載，不會直接在瀏覽器執行報站功能。
