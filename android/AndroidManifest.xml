@@ -1,0 +1,26 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.led.demo.phone" android:versionCode="40" android:versionName="V2.0">
+ <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="35"/>
+ <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/><uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"/><uses-permission android:name="android.permission.WAKE_LOCK"/><application android:label="公車報站&amp;導乘" android:icon="@drawable/logo" android:theme="@android:style/Theme.Material.NoActionBar" android:allowBackup="false" android:supportsRtl="true">
+ <activity android:hardwareAccelerated="false" android:name="com.led.phone.PhoneActivity" android:exported="true" android:configChanges="orientation|screenSize|keyboardHidden" android:windowSoftInputMode="adjustResize">
+ <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+ </activity><service android:name="com.led.phone.WidgetPlaybackService" android:exported="false" android:foregroundServiceType="mediaPlayback"/><receiver android:name="com.led.phone.BusWidget" android:label="公車報站&amp;導乘報站" android:exported="false"><intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE"/></intent-filter><meta-data android:name="android.appwidget.provider" android:resource="@xml/bus_widget_info"/></receiver></application>
+</manifest>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

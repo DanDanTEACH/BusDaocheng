@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="#101010" android:padding="12dp">
+    <TextView android:id="@+id/widget_route" android:layout_width="match_parent" android:layout_height="40dp"
+        android:text="公車報站&amp;導乘 · 點此選線 ›" android:textColor="#FFFFFF" android:textSize="16sp" android:gravity="center_vertical" />
+    <TextView android:id="@+id/widget_station" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:text="目前站名" android:textColor="#BD629D" android:textSize="24sp" android:textStyle="bold" android:gravity="center_vertical" android:maxLines="2" />
+    <TextView android:id="@+id/widget_status" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="就緒" android:textColor="#CCCCCC" android:textSize="12sp" android:maxLines="2" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal">
+        <Button android:id="@+id/widget_previous" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="上一站" android:textSize="13sp" android:padding="0dp" />
+        <Button android:id="@+id/widget_next" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:text="下一站" android:textSize="13sp" android:padding="0dp" />
+        <Button android:id="@+id/widget_auto" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1.2" android:text="自動播報" android:textSize="13sp" android:padding="0dp" />
+    </LinearLayout>
+</LinearLayout>

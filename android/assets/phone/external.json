@@ -1,0 +1,598 @@
+{
+  "3022": {
+    "0": {
+      "available": false,
+      "reason": "此路線尚未提供對外廣播音檔"
+    },
+    "1": {
+      "available": false,
+      "reason": "此路線尚未提供對外廣播音檔"
+    }
+  },
+  "3020A": {
+    "0": {
+      "available": true,
+      "file": "00030200.mp3",
+      "destination": "萬華",
+      "sourceLabel": "302"
+    },
+    "1": {
+      "available": true,
+      "file": "00030201.mp3",
+      "destination": "關渡宮",
+      "sourceLabel": "302"
+    }
+  },
+  "2230A": {
+    "0": {
+      "available": true,
+      "file": "00022300.mp3",
+      "destination": "青年公園",
+      "sourceLabel": "223"
+    },
+    "1": {
+      "available": true,
+      "file": "00022301.mp3",
+      "destination": "捷運關渡站",
+      "sourceLabel": "223"
+    }
+  },
+  "EB0111003500": {
+    "0": {
+      "available": false,
+      "reason": "所附音檔目的地為「臺北城市科技大學」，與目前方向不同"
+    },
+    "1": {
+      "available": true,
+      "file": "00003501.mp3",
+      "destination": "關渡碼頭",
+      "sourceLabel": "紅35"
+    }
+  },
+  "EB0111003520": {
+    "0": {
+      "available": false,
+      "reason": "此路線尚未提供對外廣播音檔"
+    },
+    "1": {
+      "available": false,
+      "reason": "此路線尚未提供對外廣播音檔"
+    }
+  },
+  "EB0111005500": {
+    "0": {
+      "available": true,
+      "file": "00005500.mp3",
+      "destination": "臺北藝術大學",
+      "sourceLabel": "紅55"
+    },
+    "1": {
+      "available": true,
+      "file": "00005501.mp3",
+      "destination": "捷運關渡站",
+      "sourceLabel": "紅55"
+    }
+  },
+  "EB0111005520": {
+    "0": {
+      "available": true,
+      "file": "00005510.mp3",
+      "destination": "臺北城市科技大學",
+      "sourceLabel": "紅55區間"
+    },
+    "1": {
+      "available": true,
+      "file": "00005511.mp3",
+      "destination": "捷運關渡站",
+      "sourceLabel": "紅55區間"
+    }
+  },
+  "EB0112002700": {
+    "0": {
+      "available": true,
+      "file": "00032700.mp3",
+      "destination": "捷運市政府站",
+      "sourceLabel": "藍27"
+    },
+    "1": {
+      "available": true,
+      "file": "00032701.mp3",
+      "destination": "內湖行政中心",
+      "sourceLabel": "藍27"
+    }
+  },
+  "EB0114002000": {
+    "0": {
+      "available": true,
+      "file": "00010200.mp3",
+      "destination": "故宮博物院",
+      "sourceLabel": "棕20"
+    },
+    "1": {
+      "available": true,
+      "file": "00010201.mp3",
+      "destination": "內湖科技園區",
+      "sourceLabel": "棕20"
+    }
+  },
+  "EB0100012900": {
+    "0": {
+      "available": false,
+      "reason": "所附音檔目的地為「陽明山第二停車場」，與目前方向不同"
+    },
+    "1": {
+      "available": true,
+      "file": "00012901.mp3",
+      "destination": "捷運北投站",
+      "sourceLabel": "129(假日休閒公車)"
+    }
+  },
+  "EB0151000600": {
+    "0": {
+      "available": true,
+      "file": "00010600.mp3",
+      "destination": "清天宮",
+      "sourceLabel": "小6"
+    },
+    "1": {
+      "available": true,
+      "file": "00010601.mp3",
+      "destination": "北投站",
+      "sourceLabel": "小6"
+    }
+  },
+  "EB0151000700": {
+    "0": {
+      "available": true,
+      "file": "00010700.mp3",
+      "destination": "嶺頭",
+      "sourceLabel": "小7"
+    },
+    "1": {
+      "available": true,
+      "file": "00010701.mp3",
+      "destination": "北投",
+      "sourceLabel": "小7"
+    }
+  },
+  "EB0151000800": {
+    "0": {
+      "available": true,
+      "file": "00010800.mp3",
+      "destination": "竹子湖",
+      "sourceLabel": "小8"
+    },
+    "1": {
+      "available": true,
+      "file": "00010801.mp3",
+      "destination": "捷運石牌站",
+      "sourceLabel": "小8"
+    }
+  },
+  "EB0151000820": {
+    "0": {
+      "available": false,
+      "reason": "此路線尚未提供對外廣播音檔"
+    },
+    "1": {
+      "available": false,
+      "reason": "此路線尚未提供對外廣播音檔"
+    }
+  },
+  "EB0151000900": {
+    "0": {
+      "available": true,
+      "file": "00010900.mp3",
+      "destination": "竹子湖",
+      "sourceLabel": "小9"
+    },
+    "1": {
+      "available": true,
+      "file": "00010901.mp3",
+      "destination": "捷運北投站",
+      "sourceLabel": "小9"
+    }
+  },
+  "EB0151000920": {
+    "0": {
+      "available": false,
+      "reason": "此路線尚未提供對外廣播音檔"
+    },
+    "1": {
+      "available": false,
+      "reason": "此路線尚未提供對外廣播音檔"
+    }
+  },
+  "EB0151001400": {
+    "0": {
+      "available": true,
+      "file": "00001400.mp3",
+      "destination": "照明寺",
+      "sourceLabel": "小14"
+    },
+    "1": {
+      "available": true,
+      "file": "00001401.mp3",
+      "destination": "北投",
+      "sourceLabel": "小14"
+    }
+  },
+  "EB0151002100": {
+    "0": {
+      "available": true,
+      "file": "00002101.mp3",
+      "destination": "八仙里",
+      "sourceLabel": "小21"
+    },
+    "1": {
+      "available": true,
+      "file": "00002100.mp3",
+      "destination": "北投",
+      "sourceLabel": "小21"
+    }
+  },
+  "EB0151002200": {
+    "0": {
+      "available": false,
+      "reason": "所附音檔目的地為「新民泉源」，與目前方向不同"
+    },
+    "1": {
+      "available": true,
+      "file": "00002201.mp3",
+      "destination": "北投",
+      "sourceLabel": "小22"
+    }
+  },
+  "EB0151002300": {
+    "0": {
+      "available": true,
+      "file": "00002300.mp3",
+      "destination": "北投國小",
+      "sourceLabel": "小23"
+    },
+    "1": {
+      "available": true,
+      "file": "00002301.mp3",
+      "destination": "關渡碼頭",
+      "sourceLabel": "小23"
+    }
+  },
+  "EB0151002500": {
+    "0": {
+      "available": true,
+      "file": "00002500.mp3",
+      "destination": "六窟",
+      "sourceLabel": "小25"
+    },
+    "1": {
+      "available": true,
+      "file": "00002501.mp3",
+      "destination": "捷運北投站",
+      "sourceLabel": "小25"
+    }
+  },
+  "EB0151002600": {
+    "0": {
+      "available": true,
+      "file": "00002600.mp3",
+      "destination": "頂湖",
+      "sourceLabel": "小26"
+    },
+    "1": {
+      "available": true,
+      "file": "00002601.mp3",
+      "destination": "北投",
+      "sourceLabel": "小26"
+    }
+  },
+  "EB0151002800": {
+    "0": {
+      "available": false,
+      "reason": "所附音檔目的地為「登山路」，與目前方向不同"
+    },
+    "1": {
+      "available": true,
+      "file": "00002801.mp3",
+      "destination": "捷運北投站",
+      "sourceLabel": "小28"
+    }
+  },
+  "EB0151003600": {
+    "0": {
+      "available": true,
+      "file": "00003600.mp3",
+      "destination": "六窟",
+      "sourceLabel": "小36"
+    },
+    "1": {
+      "available": true,
+      "file": "00003601.mp3",
+      "destination": "捷運石牌站",
+      "sourceLabel": "小36"
+    }
+  },
+  "EB0100021600": {
+    "0": {
+      "available": false,
+      "reason": "所附音檔目的地為「捷運劍潭站」，與目前方向不同"
+    },
+    "1": {
+      "available": true,
+      "file": "00021601.mp3",
+      "destination": "新北投",
+      "sourceLabel": "216"
+    }
+  },
+  "EB0100021800": {
+    "0": {
+      "available": true,
+      "file": "00021800.mp3",
+      "destination": "萬華",
+      "sourceLabel": "218"
+    },
+    "1": {
+      "available": true,
+      "file": "00021801.mp3",
+      "destination": "新北投",
+      "sourceLabel": "218"
+    }
+  },
+  "EB0100021820": {
+    "0": {
+      "available": true,
+      "file": "00021810.mp3",
+      "destination": "捷運奇岩站",
+      "sourceLabel": "218區間"
+    },
+    "1": {
+      "available": true,
+      "file": "00021811.mp3",
+      "destination": "新北投",
+      "sourceLabel": "218區間"
+    }
+  },
+  "EB0100021830": {
+    "0": {
+      "available": true,
+      "file": "00021820.mp3",
+      "destination": "萬華",
+      "sourceLabel": "218直達"
+    },
+    "1": {
+      "available": true,
+      "file": "00021821.mp3",
+      "destination": "新北投",
+      "sourceLabel": "218直達"
+    }
+  },
+  "EB0152001600": {
+    "0": {
+      "available": true,
+      "file": "00001600.mp3",
+      "destination": "內湖科技園區",
+      "sourceLabel": "內科通勤專車16"
+    },
+    "1": {
+      "available": true,
+      "file": "00001601.mp3",
+      "destination": "北投",
+      "sourceLabel": "內科通勤專車16"
+    }
+  },
+  "EB0152002000": {
+    "0": {
+      "available": true,
+      "file": "00001900.mp3",
+      "destination": "內湖科技園區",
+      "sourceLabel": "內科通勤專車20"
+    },
+    "1": {
+      "available": true,
+      "file": "00001901.mp3",
+      "destination": "捷運市府站",
+      "sourceLabel": "內科通勤專車20"
+    }
+  },
+  "EB0152003200": {
+    "0": {
+      "available": true,
+      "file": "00002000.mp3",
+      "destination": "南港軟體園區",
+      "sourceLabel": "南軟通勤專車-北投線"
+    },
+    "1": {
+      "available": true,
+      "file": "00002001.mp3",
+      "destination": "新北投",
+      "sourceLabel": "南軟通勤專車-北投線"
+    }
+  },
+  "EB0152000B00": {
+    "0": {
+      "available": true,
+      "file": "00001700.mp3",
+      "destination": "內湖科技園區",
+      "sourceLabel": "內科通勤專車-市府直達車"
+    },
+    "1": {
+      "available": true,
+      "file": "00001701.mp3",
+      "destination": "捷運市政府站",
+      "sourceLabel": "內科通勤專車-市府直達車"
+    }
+  },
+  "EB0100023000": {
+    "0": {
+      "available": true,
+      "file": "00012300.mp3",
+      "destination": "陽明山",
+      "sourceLabel": "230"
+    },
+    "1": {
+      "available": true,
+      "file": "00012301.mp3",
+      "destination": "捷運北投站",
+      "sourceLabel": "230"
+    }
+  },
+  "EB0153000600": {
+    "0": {
+      "available": true,
+      "file": "00000600.mp3",
+      "destination": "捷運南港站",
+      "sourceLabel": "市民小巴6"
+    },
+    "1": {
+      "available": true,
+      "file": "00000601.mp3",
+      "destination": "舊莊",
+      "sourceLabel": "市民小巴6"
+    }
+  },
+  "EB0153001500": {
+    "0": {
+      "available": true,
+      "file": "00001500.mp3",
+      "destination": "捷運南港展覽館站",
+      "sourceLabel": "市民小巴15"
+    },
+    "1": {
+      "available": true,
+      "file": "00001501.mp3",
+      "destination": "捷運昆陽站",
+      "sourceLabel": "市民小巴15"
+    }
+  },
+  "EB0100026590": {
+    "0": {
+      "available": true,
+      "file": "00026500.mp3",
+      "destination": "行政院",
+      "sourceLabel": "265"
+    },
+    "1": {
+      "available": true,
+      "file": "00026501.mp3",
+      "destination": "土城",
+      "sourceLabel": "265"
+    }
+  },
+  "EB0100026520": {
+    "0": {
+      "available": true,
+      "file": "00026510.mp3",
+      "destination": "行政院",
+      "sourceLabel": "265區間"
+    },
+    "1": {
+      "available": false,
+      "reason": "所附音檔目的地為「板橋」，與目前方向不同"
+    }
+  },
+  "EB0161000900": {
+    "0": {
+      "available": true,
+      "file": "00026630.mp3",
+      "destination": "捷運市府站",
+      "sourceLabel": "承德幹線"
+    },
+    "1": {
+      "available": true,
+      "file": "00026631.mp3",
+      "destination": "新北投",
+      "sourceLabel": "承德幹線"
+    }
+  },
+  "EB0100028800": {
+    "0": {
+      "available": true,
+      "file": "00028800.mp3",
+      "destination": "吳興街",
+      "sourceLabel": "288"
+    },
+    "1": {
+      "available": true,
+      "file": "00028801.mp3",
+      "destination": "兒童新樂園",
+      "sourceLabel": "288"
+    }
+  },
+  "EB0100052900": {
+    "0": {
+      "available": true,
+      "file": "00052900.mp3",
+      "destination": "新光醫院",
+      "sourceLabel": "529"
+    },
+    "1": {
+      "available": true,
+      "file": "00052901.mp3",
+      "destination": "兒童新樂園",
+      "sourceLabel": "529"
+    }
+  },
+  "EB0100055000": {
+    "0": {
+      "available": false,
+      "reason": "所附音檔目的地為「洲美運動公園」，與目前方向不同"
+    },
+    "1": {
+      "available": true,
+      "file": "00055001.mp3",
+      "destination": "關渡宮",
+      "sourceLabel": "550"
+    }
+  },
+  "EB0100055100": {
+    "0": {
+      "available": true,
+      "file": "00055100.mp3",
+      "destination": "捷運昆陽站",
+      "sourceLabel": "551"
+    },
+    "1": {
+      "available": true,
+      "file": "00055101.mp3",
+      "destination": "內湖科技園區",
+      "sourceLabel": "551"
+    }
+  },
+  "EB0100060200": {
+    "0": {
+      "available": true,
+      "file": "00060201.mp3",
+      "destination": "北投",
+      "sourceLabel": "602"
+    },
+    "1": {
+      "available": true,
+      "file": "00060200.mp3",
+      "destination": "天母",
+      "sourceLabel": "602"
+    }
+  },
+  "EB0400073100": {
+    "0": {
+      "available": false,
+      "reason": "此路線尚未提供對外廣播音檔"
+    },
+    "1": {
+      "available": false,
+      "reason": "此路線尚未提供對外廣播音檔"
+    }
+  },
+  "EB0400083900": {
+    "0": {
+      "available": true,
+      "file": "00083900.mp3",
+      "destination": "捷運新店站",
+      "sourceLabel": "839"
+    },
+    "1": {
+      "available": true,
+      "file": "00083901.mp3",
+      "destination": "達觀社區",
+      "sourceLabel": "839"
+    }
+  }
+}
