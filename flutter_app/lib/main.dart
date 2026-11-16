@@ -281,7 +281,7 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     final light = integer('appTheme', 0) == 1;
     return MaterialApp(
-      title: appName,
+      title: '$appName $appVersion',
       debugShowCheckedModeBanner: false,
       locale: const Locale('zh', 'TW'),
       supportedLocales: const [Locale('zh', 'TW')],
