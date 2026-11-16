@@ -1,4 +1,4 @@
-name: Build desktop iOS and web
+name: Build and deploy web
 on:
   workflow_dispatch:
 permissions:
@@ -6,58 +6,6 @@ permissions:
   pages: write
   id-token: write
 jobs:
-  native:
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        shell: bash
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install Flutter
-        run: |
-          git clone --depth 1 --branch 3.50.0 https://github.com/flutter/flutter.git "$RUNNER_TEMP/flutter"
-          echo "$RUNNER_TEMP/flutter/bin" >> "$GITHUB_PATH"
-      - name: Dependencies and tests
-        working-directory: flutter_app
-        run: |
-          flutter pub get
-          flutter analyze
-          flutter test
-      - name: Windows build
-        if: runner.os == 'Windows'
-        working-directory: flutter_app
-        run: flutter build windows --release
-      - name: Package Windows
-        if: runner.os == 'Windows'
-        shell: pwsh
-        run: Compress-Archive -Path flutter_app/build/windows/x64/runner/Release/* -DestinationPath BusDaocheng-0.02-windows-x64.zip
-      - name: iOS unsigned build
-        if: runner.os == 'macOS'
-        working-directory: flutter_app
-        run: |
-          flutter build ios --release --no-codesign
-          mkdir -p build/ios-package/Payload
-          cp -R build/ios/iphoneos/Runner.app build/ios-package/Payload/
-          cd build/ios-package
-          zip -q -r "$GITHUB_WORKSPACE/BusDaocheng-0.02-ios-unsigned.ipa" Payload
-      - name: Upload native artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: native-${{ runner.os }}-0.02
-          path: |
-            BusDaocheng-0.02-windows-x64.zip
-            BusDaocheng-0.02-ios-unsigned.ipa
-          if-no-files-found: error
-      - name: Attach native package to Release
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          if [ "$RUNNER_OS" = "Windows" ]; then FILE=BusDaocheng-0.02-windows-x64.zip; else FILE=BusDaocheng-0.02-ios-unsigned.ipa; fi
-          gh release upload 0.02 "$FILE" --clobber
   web:
     runs-on: ubuntu-latest
     environment:
@@ -87,3 +35,4 @@ jobs:
       - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+

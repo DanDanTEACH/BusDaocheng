@@ -2,10 +2,12 @@
 
 選好公車路線與方向，就能顯示站名、手動切站或自動播報。
 
-## 下載與使用
+## 開啟網頁版
 
-- **[Android版](https://github.com/DanDanTEACH/BusDaocheng/releases/download/0.02/Bus-Announcement-Guide-0.02.apk)**：適用 Android 8.0 以上。
-- **[網頁版](https://dandanteach.github.io/BusDaocheng/app/)**：使用瀏覽器操作，第一次播報請點選按鈕啟動聲音。
+**[開始使用公車報站&導乘](https://dandanteach.github.io/BusDaocheng/app/)**
+
+使用瀏覽器操作，第一次播報請點選按鈕啟動聲音。
+目前只更新網頁版；其他平台暫停建置，現有原始碼保留。
 
 
 ## 主要功能
@@ -28,4 +30,7 @@
 
 採用 Flutter 開發，請見 [專案與建置說明](flutter_app/README.md)。
 
-目前版本 **0.02**。
+目前版本 **0.02**，之後小版本依序遞增。詳細規則見 [VERSIONING.md](VERSIONING.md)。
+
+
+
