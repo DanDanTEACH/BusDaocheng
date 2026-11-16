@@ -32,4 +32,6 @@
 
 ## 原始碼
 
-Android APP 原始碼與編譯方式請見 [android 資料夾](android/README.md)。
+目前版本使用 **Flutter**，原始碼與編譯方式請見 [flutter_app 資料夾](flutter_app/README.md)。
+
+原生 Android 舊版保留於 [android 資料夾](android/README.md)，亦提供共用路線及音檔素材。

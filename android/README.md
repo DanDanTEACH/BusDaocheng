@@ -1,6 +1,6 @@
-# Android 原始碼
+# 原生 Android 舊版原始碼
 
-這裡是「公車報站&導乘 V2.0」目前使用的原生 Android Java 原始碼，包含 APP、桌面小工具、背景播報服務與所需素材，沒有使用 Flutter。
+目前版本已移植至 [Flutter](../flutter_app/README.md)。這裡保留「公車報站&導乘 V2.0」移植前的原生 Android Java 原始碼，包含 APP、桌面小工具、背景播報服務與所需素材，沒有使用 Flutter。
 
 ## 檔案
 

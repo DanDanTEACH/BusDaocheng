@@ -5,7 +5,7 @@
 - 入口：index.html
 - 樣式：style.css
 - 圖片：assets/
-- APK：downloads/Bus-Announcement-Guide-V2.0.apk
+- APK：GitHub Releases 的 Bus-Announcement-Guide-V2.0.apk（網站連結直接下載 Release）
 - GitHub Pages：main 分支 / (root)
 
 更新 APK 時請同步更新頁面版本、檔案大小與日期。

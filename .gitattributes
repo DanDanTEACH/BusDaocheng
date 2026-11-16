@@ -1,5 +1,6 @@
 # Count application source as the project's primary language.
-android/src/** linguist-vendored=false linguist-generated=false
+android/src/** linguist-vendored=true
+flutter_app/lib/** linguist-vendored=false linguist-generated=false
 
 # Website files are documentation for the Android application.
 index.html linguist-documentation=true
