@@ -6,9 +6,7 @@
 
 - **[Android 安裝檔](https://github.com/DanDanTEACH/BusDaocheng/releases/download/0.02/Bus-Announcement-Guide-0.02.apk)**：適用 Android 8.0 以上。
 - **[直接開啟網頁版](https://dandanteach.github.io/BusDaocheng/app/)**：使用瀏覽器操作，第一次播報請點選按鈕啟動聲音。
-- **[Windows 版](https://github.com/DanDanTEACH/BusDaocheng/releases/download/0.02/BusDaocheng-0.02-windows-x64.zip)**：完整解壓縮後執行 `bus_daocheng.exe`，請保留同資料夾的其他檔案。
-- **[iOS 未簽署版本](https://github.com/DanDanTEACH/BusDaocheng/releases/download/0.02/BusDaocheng-0.02-ios-unsigned.ipa)**：需要自行完成 Apple 簽署，不能直接安裝到 iPhone。
-- **[查看全部下載檔案](https://github.com/DanDanTEACH/BusDaocheng/releases/tag/0.02)**。
+
 
 ## 主要功能
 
