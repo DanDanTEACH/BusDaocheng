@@ -1,20 +1,18 @@
-# 公車報站&導乘 — Flutter
+# 公車報站&導乘 0.01 — Flutter 多平台專案
 
-這是目前的 Flutter 版本。四個分頁、Material 3 介面、設定、路線圖與到站顯示／動畫、自動切站邏輯由 Dart 實作。
+支援 Android、iOS、網頁與 Windows。介面、路線圖、站名動畫、自動切站與一般播放邏輯共用 Dart 程式。
 
-## 架構
+- `lib/main.dart`：主要介面與播放控制。
+- `lib/platform_bridge.dart`：Android 原生橋接，以及其他平台的音效、設定及圖片選擇實作。
+- `lib/bell_model.dart`：其他平台共用的下車鈴繪圖。
+- `lib/version.dart`：顯示版本 0.01。
+- `assets/phone/`：共用的 45 條路線、圖片與音檔。
+- `android/`：Android 桌面小工具、背景服務及原有下車鈴繪圖橋接。
+- `ios/`、`web/`、`windows/`：各平台工程。
 
-- `lib/main.dart`：Flutter 介面、路線選擇、播放與自動播報、站名動畫、設備及設定。
-- `android/app/src/main/java/com/led/phone/PhoneActivity.java`：Flutter 平台通道，連接 Android 音效、相簿、既有設定及下車鈴模型繪圖。
-- `BusWidget.java`、`WidgetPlaybackService.java`：保留 Android 桌面小工具與背景播報。
-- `test/`：分類、站序、操作介面、音檔播放鎖定、缺音自動續播測試。
-- 路線、圖示與音檔共用儲存庫根目錄的 `android/assets/`、`android/res/`，不重複存放。
+## 開發與測試
 
-套件名稱維持 `com.led.demo.phone`，既有設定及桌面小工具資料可沿用。這次主要針對 Android 移植，未製作 iOS 或網頁版。
-
-## 開發
-
-安裝 Flutter stable（目前驗證版本：Flutter 3.50.0 / Dart 3.14.0）、JDK 與 Android SDK，保留完整儲存庫目錄結構，進入此資料夾：
+目前驗證環境為 Flutter 3.50.0 / Dart 3.14.0。
 
 ```sh
 flutter pub get
@@ -23,18 +21,42 @@ flutter test
 flutter run
 ```
 
-## 建置
+## Android
 
 ```sh
 flutter build apk --release
 ```
 
-預設輸出是供自行測試的簽章。需要發布時，以自己的金鑰執行 `build-release.ps1`，腳本會在 Flutter 建置完成後重新簽署並驗證 V1、V2、V3。原始發布金鑰不在 GitHub 中，使用其他金鑰不能覆蓋安裝正式 APK。
+正式發布使用 `build-release.ps1` 與自己的簽署金鑰，啟用 V1/V2/V3。原始金鑰不在儲存庫中。套件名稱仍為 `com.led.demo.phone`，建置號 44，保留舊版設定；Android 小工具為此平台專屬。
 
-```powershell
-$env:BUS_KEYSTORE_PASSWORD = '你的金鑰庫密碼'
-$env:BUS_KEY_PASSWORD = '你的金鑰密碼'
-.\build-release.ps1 -KeyStore 'D:\private\release.p12' -KeyAlias 'release' -JavaHome 'C:\Program Files\Android\Android Studio\jbr'
+## 網頁
+
+```sh
+flutter build web --release --base-href /BusDaocheng/app/
 ```
 
-不要將金鑰、密碼、`local.properties` 或建置產物提交到 GitHub。
+透過 HTTP/HTTPS 伺服器提供 `build/web`，不能只用檔案總管開啟 index.html。瀏覽器聲音由使用者點擊啟動，背景分頁可能暫停播放。非 Android 平台匯入背景圖片目前限制 3 MB。
+
+## Windows
+
+安裝 Visual Studio 的 Desktop development with C++ 工作負載後：
+
+```sh
+flutter build windows --release
+```
+
+發佈 `build/windows/x64/runner/Release/` **整個資料夾**，不能只複製 exe。GitHub Actions 亦提供 Windows 建置。
+
+## iOS
+
+需要 macOS 與 Xcode：
+
+```sh
+flutter build ios --release --no-codesign
+```
+
+GitHub Actions 會建置並包成標示 `unsigned` 的 IPA。此 IPA 沒有 Apple 簽章，**無法直接安裝到 iPhone**。欲使用實機或 TestFlight，需以自己的 Apple Developer Team、憑證及 provisioning profile 簽署。未提供 iOS 桌面小工具。
+
+## 版本
+
+對外顯示 **0.01**；平台內部版本為 **0.0.1+44**，符合 Flutter / Apple 格式，並保持 Android 更新號遞增。後續更新必須同步 [version.json](../version.json) 及 [版本規則](../VERSIONING.md)。

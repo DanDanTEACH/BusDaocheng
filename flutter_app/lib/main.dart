@@ -5,9 +5,13 @@ import 'dart:math' as math;
 import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 
+import 'platform_bridge.dart';
+import 'bell_model.dart';
+import 'version.dart';
+export 'platform_bridge.dart' show nativeBridge;
+
 const appName = '公車報站&導乘';
 const categories = ['一般數字路線', '小型路線', '捷運接駁路線', '其他'];
-const bridge = MethodChannel('com.led.phone/bridge');
 int categoryOf(String label) {
   if (label.startsWith('小') || label.startsWith('市民小巴')) return 1;
   if (label.startsWith('紅') || label.startsWith('藍') || label.startsWith('棕')) {
@@ -132,7 +136,9 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state != AppLifecycleState.resumed) {
+    if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.hidden ||
+        state == AppLifecycleState.detached) {
       stop();
     } else {
       refreshNative();
@@ -395,7 +401,7 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                appName,
+                '$appName  $appVersion',
                 style: TextStyle(
                   fontSize: 13,
                   color: Theme.of(c).colorScheme.primary,
@@ -805,12 +811,17 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
                             child: Semantics(
                               label: ['下車鈴指示器', '按下一般下車鈴', '按下卡農下車鈴'][kind],
                               button: kind != 0,
-                              child: AndroidView(
-                                viewType: 'bus/hardware',
-                                creationParams: {'kind': kind},
-                                creationParamsCodec:
-                                    const StandardMessageCodec(),
-                              ),
+                              child: usesAndroid
+                                  ? AndroidView(
+                                      viewType: 'bus/hardware',
+                                      creationParams: {'kind': kind},
+                                      creationParamsCodec:
+                                          const StandardMessageCodec(),
+                                    )
+                                  : CustomPaint(
+                                      painter: BellModel(kind, bellState),
+                                      child: const SizedBox.expand(),
+                                    ),
                             ),
                           ),
                         ),
@@ -1004,7 +1015,16 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
         ),
         setting('跟隨系統', 'Android 12 以上使用系統動態強調色', () => save('appAccent', 5)),
         setting('背景照片', background == null ? '尚未設定' : '已使用自訂照片', () async {
-          final bytes = await bridge.invokeMethod<Uint8List>('pickBackground');
+          Uint8List? bytes;
+          try {
+            bytes = await bridge.invokeMethod<Uint8List>('pickBackground');
+          } on PlatformException catch (e) {
+            if (c.mounted) {
+              ScaffoldMessenger.of(c)
+                  .showSnackBar(SnackBar(content: Text(e.message ?? '圖片無法匯入')));
+            }
+            return;
+          }
           if (bytes != null) {
             setState(() => background = bytes);
             save('customBackground', true);

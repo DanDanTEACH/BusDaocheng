@@ -1,37 +1,33 @@
-# 公車報站&導乘 V2.0
+# 公車報站&導乘 0.01
 
-<img src="assets/icon.png" alt="公車報站&導乘 APP 圖示" width="96">
+選好公車路線與方向，就能顯示站名、手動切站或自動播報。
 
-在 Android 手機上體驗公車到站畫面與站名播報。選好路線與方向，就能手動切換站名，或使用自動播報。
+## 下載與使用
+
+- **[Android 安裝檔](https://github.com/DanDanTEACH/BusDaocheng/releases/download/0.01/Bus-Announcement-Guide-0.01.apk)**：適用 Android 8.0 以上。
+- **[直接開啟網頁版](https://dandanteach.github.io/BusDaocheng/app/)**：使用瀏覽器操作，第一次播報請點選按鈕啟動聲音。
+- **[Windows 版](https://github.com/DanDanTEACH/BusDaocheng/releases/download/0.01/BusDaocheng-0.01-windows-x64.zip)**：完整解壓縮後執行 `bus_daocheng.exe`，請保留同資料夾的其他檔案。
+- **[iOS 未簽署版本](https://github.com/DanDanTEACH/BusDaocheng/releases/download/0.01/BusDaocheng-0.01-ios-unsigned.ipa)**：需要自行完成 Apple 簽署，不能直接安裝到 iPhone。
+- **[查看全部下載檔案](https://github.com/DanDanTEACH/BusDaocheng/releases/tag/0.01)**。
 
 ## 主要功能
 
-- 選擇公車路線與行駛方向。
-- 顯示站名，播放中文、台語、客家語與英語錄音。
-- 自動切換下一站，可調整間隔時間，也能隨時停止。
-- 查看及放大路線圖。
-- 體驗下車鈴與對外廣播。
-- 調整畫面顏色、背景與時鐘，也能使用手機桌面小工具。
+- 選擇公車路線與方向，查看動畫站名及路線圖。
+- 播放中文、台語、客家語與英語站名錄音。
+- 設定自動切站間隔，隨時停止播報。
+- 使用下車鈴與對外廣播。
+- 調整主題、時鐘、背景照片。
 
-## 下載安裝
-
-適用 **Android 8.0 以上**的手機。
-
-**[點此下載 V2.0 安裝檔](https://github.com/DanDanTEACH/BusDaocheng/releases/download/v2.0/Bus-Announcement-Guide-V2.0.apk)**
-
-下載後，在手機上開啟檔案，依畫面提示完成安裝。
+桌面小工具目前僅提供 Android 版本。部分站名或對外廣播尚未提供錄音；路線圖僅供參考，實際乘車資訊請以營運單位公告為準。
 
 ## 怎麼使用？
 
-1. 開啟 APP，選擇路線與方向，按下「確認」。
-2. 按「下一站」切換站名並播報，或按「自動播報」讓 APP 自動切站。
-3. 想調整播放間隔、顏色或背景，可到「設定」修改。
+1. 選擇路線與方向，按下「確認」。
+2. 按「下一站」切換站名並播報，或啟動「自動播報」。
+3. 在「設定」調整播放間隔及外觀。
 
-部分站名及對外廣播尚無錄音；缺少站名錄音時，自動播報仍會繼續切站。路線圖僅供參考，實際乘車資訊請以公車營運單位公告為準。
+## 原始碼與版本
 
+採用 Flutter 開發，請見 [專案與建置說明](flutter_app/README.md)。
 
-## 原始碼
-
-目前版本使用 **Flutter**，原始碼與編譯方式請見 [flutter_app 資料夾](flutter_app/README.md)。
-
-原生 Android 舊版保留於 [android 資料夾](android/README.md)，亦提供共用路線及音檔素材。
+目前版本 **0.01**，之後小版本依序為 **0.02、0.03、0.04**。詳細規則見 [VERSIONING.md](VERSIONING.md)。

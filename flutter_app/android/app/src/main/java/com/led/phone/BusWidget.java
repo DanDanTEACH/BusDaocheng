@@ -9,7 +9,7 @@ import java.io.*;
 
 public class BusWidget extends AppWidgetProvider {
     static String read(Context context, String path) throws Exception {
-        try (InputStream in=context.getAssets().open(path); ByteArrayOutputStream out=new ByteArrayOutputStream()) {
+        try (InputStream in=context.getAssets().open("flutter_assets/assets/"+path); ByteArrayOutputStream out=new ByteArrayOutputStream()) {
             byte[] bytes=new byte[8192]; int count;
             while ((count=in.read(bytes))!=-1) out.write(bytes,0,count);
             return out.toString("UTF-8");

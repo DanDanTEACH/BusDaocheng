@@ -29,7 +29,7 @@ void main() {
   }) async {
     assetCache.clear();
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-        .setMockMethodCallHandler(bridge, (call) async {
+        .setMockMethodCallHandler(nativeBridge, (call) async {
           if (call.method == 'init') {
             return {
               'routes': jsonEncode([route]),

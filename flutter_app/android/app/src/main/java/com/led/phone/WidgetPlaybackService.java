@@ -76,7 +76,7 @@ public class WidgetPlaybackService extends Service {
             if(!wakeLock.isHeld())wakeLock.acquire();
             publish("播報中");
             File local=new File(getCacheDir(),"widget-announcement.mp3");
-            try(InputStream in=getAssets().open("phone/audio/"+file);FileOutputStream out=new FileOutputStream(local)) {
+            try(InputStream in=getAssets().open("flutter_assets/assets/phone/audio/"+file);FileOutputStream out=new FileOutputStream(local)) {
                 byte[] bytes=new byte[8192];int count;
                 while((count=in.read(bytes))!=-1)out.write(bytes,0,count);
             }

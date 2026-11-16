@@ -16,7 +16,7 @@ try {
     New-Item -ItemType Directory -Force build\classes,build\dex | Out-Null
     & "$tools\aapt2.exe" compile --dir res -o build\compiled.zip
     Check-Exit
-    & "$tools\aapt2.exe" link -I $androidJar --manifest AndroidManifest.xml -A assets -o build\resources.apk build\compiled.zip
+    & "$tools\aapt2.exe" link -I $androidJar --manifest AndroidManifest.xml -A ..\flutter_app\assets -o build\resources.apk build\compiled.zip
     Check-Exit
     & $javac -encoding UTF-8 -source 8 -target 8 -classpath $androidJar -d build\classes src\com\led\phone\PhoneActivity.java src\com\led\phone\BusWidget.java src\com\led\phone\WidgetPlaybackService.java
     Check-Exit
@@ -35,9 +35,9 @@ try {
         & $keytool -genkeypair -keystore build\local-debug.p12 -storetype PKCS12 -alias androiddebugkey -storepass android -keypass android -dname 'CN=Android Debug' -keyalg RSA -keysize 2048 -validity 10000 -noprompt
         Check-Exit
     }
-    & $java -jar "$tools\lib\apksigner.jar" sign --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true --ks build\local-debug.p12 --ks-key-alias androiddebugkey --ks-pass pass:android --key-pass pass:android --out build\Bus-Announcement-Guide-V2.0-debug.apk build\aligned.apk
+    & $java -jar "$tools\lib\apksigner.jar" sign --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true --ks build\local-debug.p12 --ks-key-alias androiddebugkey --ks-pass pass:android --key-pass pass:android --out build\Bus-Announcement-Guide-0.01-debug.apk build\aligned.apk
     Check-Exit
-    & $java -jar "$tools\lib\apksigner.jar" verify --verbose --min-sdk-version 23 build\Bus-Announcement-Guide-V2.0-debug.apk
+    & $java -jar "$tools\lib\apksigner.jar" verify --verbose --min-sdk-version 23 build\Bus-Announcement-Guide-0.01-debug.apk
     Check-Exit
-    Write-Output (Join-Path $PSScriptRoot 'build\Bus-Announcement-Guide-V2.0-debug.apk')
+    Write-Output (Join-Path $PSScriptRoot 'build\Bus-Announcement-Guide-0.01-debug.apk')
 } finally { Pop-Location }

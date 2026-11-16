@@ -22,7 +22,7 @@ public class PhoneActivity extends FlutterActivity {
     final ArrayList<HardwareView> hardware=new ArrayList<>();
     android.content.SharedPreferences prefs(){return getSharedPreferences("com.led.phone.PhoneActivity",0);}
     int dp(float n){return (int)(n*getResources().getDisplayMetrics().density+.5f);}
-    byte[] bytes(String path)throws Exception{try(InputStream in=getAssets().open(path);ByteArrayOutputStream out=new ByteArrayOutputStream()){byte[] b=new byte[8192];int n;while((n=in.read(b))!=-1)out.write(b,0,n);return out.toByteArray();}}
+    byte[] bytes(String path)throws Exception{try(InputStream in=getAssets().open("flutter_assets/assets/"+path);ByteArrayOutputStream out=new ByteArrayOutputStream()){byte[] b=new byte[8192];int n;while((n=in.read(b))!=-1)out.write(b,0,n);return out.toByteArray();}}
     int accent(){return Build.VERSION.SDK_INT>=31?getResources().getColor(prefs().getInt("appTheme",0)==1?android.R.color.system_accent1_600:android.R.color.system_accent1_200,null):0xffd0bcff;}
     Map<String,Object> snapshot(){stopService(new Intent(this,WidgetPlaybackService.class));BusWidget.refresh(this);Map<String,Object> data=new HashMap<>();data.put("preferences",prefs().getAll());data.put("accent",accent());data.put("index",BusWidget.key(this).equals(BusWidget.state(this).getString("key",""))?BusWidget.state(this).getInt("index",0):0);return data;}
     @Override public void configureFlutterEngine(FlutterEngine engine){super.configureFlutterEngine(engine);
