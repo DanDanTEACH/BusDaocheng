@@ -34,7 +34,7 @@ jobs:
       - name: Package Windows
         if: runner.os == 'Windows'
         shell: pwsh
-        run: Compress-Archive -Path flutter_app/build/windows/x64/runner/Release/* -DestinationPath BusDaocheng-0.01-windows-x64.zip
+        run: Compress-Archive -Path flutter_app/build/windows/x64/runner/Release/* -DestinationPath BusDaocheng-0.02-windows-x64.zip
       - name: iOS unsigned build
         if: runner.os == 'macOS'
         working-directory: flutter_app
@@ -43,21 +43,21 @@ jobs:
           mkdir -p build/ios-package/Payload
           cp -R build/ios/iphoneos/Runner.app build/ios-package/Payload/
           cd build/ios-package
-          zip -q -r "$GITHUB_WORKSPACE/BusDaocheng-0.01-ios-unsigned.ipa" Payload
+          zip -q -r "$GITHUB_WORKSPACE/BusDaocheng-0.02-ios-unsigned.ipa" Payload
       - name: Upload native artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: native-${{ runner.os }}-0.01
+          name: native-${{ runner.os }}-0.02
           path: |
-            BusDaocheng-0.01-windows-x64.zip
-            BusDaocheng-0.01-ios-unsigned.ipa
+            BusDaocheng-0.02-windows-x64.zip
+            BusDaocheng-0.02-ios-unsigned.ipa
           if-no-files-found: error
       - name: Attach native package to Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if [ "$RUNNER_OS" = "Windows" ]; then FILE=BusDaocheng-0.01-windows-x64.zip; else FILE=BusDaocheng-0.01-ios-unsigned.ipa; fi
-          gh release upload 0.01 "$FILE" --clobber
+          if [ "$RUNNER_OS" = "Windows" ]; then FILE=BusDaocheng-0.02-windows-x64.zip; else FILE=BusDaocheng-0.02-ios-unsigned.ipa; fi
+          gh release upload 0.02 "$FILE" --clobber
   web:
     runs-on: ubuntu-latest
     environment:

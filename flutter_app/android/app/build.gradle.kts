@@ -7,7 +7,7 @@ android {
  compileSdk = flutter.compileSdkVersion
  ndkVersion = flutter.ndkVersion
  compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
- defaultConfig { applicationId = "com.led.demo.phone"; minSdk = 26; targetSdk = 35; versionCode = flutter.versionCode; versionName = "0.01" }
+ defaultConfig { applicationId = "com.led.demo.phone"; minSdk = 26; targetSdk = 35; versionCode = flutter.versionCode; versionName = "0.02" }
  sourceSets.getByName("main") { res.srcDir("../../../android/res") }
  buildTypes { release { signingConfig = signingConfigs.getByName("debug") } }
 }

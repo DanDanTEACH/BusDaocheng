@@ -1,7 +1,7 @@
 name: bus_daocheng
 description: 公車報站與導乘 Flutter multiplatform application
 publish_to: none
-version: 0.0.1+44
+version: 0.0.2+45
 environment:
   sdk: ^3.14.0
 dependencies:

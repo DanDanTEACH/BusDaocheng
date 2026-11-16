@@ -15,8 +15,8 @@ Push-Location $PSScriptRoot
 try {
  & $Flutter build apk --release --target-platform android-arm,android-arm64,android-x64
  if($LASTEXITCODE -ne 0){throw 'Flutter build failed'}
- & $java -jar $signer sign --ks $KeyStore --ks-key-alias $KeyAlias --ks-pass env:BUS_KEYSTORE_PASSWORD --key-pass env:BUS_KEY_PASSWORD --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true --out build\Bus-Announcement-Guide-0.01.apk build\app\outputs\flutter-apk\app-release.apk
+ & $java -jar $signer sign --ks $KeyStore --ks-key-alias $KeyAlias --ks-pass env:BUS_KEYSTORE_PASSWORD --key-pass env:BUS_KEY_PASSWORD --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true --out build\Bus-Announcement-Guide-0.02.apk build\app\outputs\flutter-apk\app-release.apk
  if($LASTEXITCODE -ne 0){throw 'Signing failed'}
- & $java -jar $signer verify --verbose --min-sdk-version 23 build\Bus-Announcement-Guide-0.01.apk
+ & $java -jar $signer verify --verbose --min-sdk-version 23 build\Bus-Announcement-Guide-0.02.apk
  if($LASTEXITCODE -ne 0){throw 'Signature verification failed'}
 } finally { Pop-Location }

@@ -1071,8 +1071,8 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
       return ColoredBox(
         color: [
           Colors.black,
-          const Color(0xff092038),
-          const Color(0xfff5f5ed),
+          const Color(0xff071f38),
+          const Color(0xfff4f6fa),
         ][theme],
         child: Column(
           children: [
@@ -1318,13 +1318,39 @@ class StopsPainter extends CustomPainter {
     p.paint(c, Offset(x, y - p.height));
   }
 
+  // Station text uses a top coordinate, not a font-dependent bottom/baseline.
+  // This keeps the first glyph entirely inside the clipping area on every platform.
+  void stationGlyph(
+    Canvas canvas,
+    String value,
+    double centerX,
+    double top,
+    double font,
+    Color color,
+  ) {
+    final painter = TextPainter(
+      text: TextSpan(
+        text: value,
+        style: TextStyle(
+          fontSize: font,
+          height: 1,
+          color: color,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    )..layout();
+    painter.paint(canvas, Offset(centerX - painter.width / 2, top));
+  }
+
   @override
   void paint(Canvas c, Size size) {
     c.save();
     c.scale(size.width / 1920, size.height / 560);
     final light = data.theme == 2;
-    final white = light ? Colors.black : Colors.white;
-    final paint = Paint()..color = const Color(0xff6aadbd);
+    final white = light ? const Color(0xff18202c) : Colors.white;
+    final paint = Paint()
+      ..color = light ? const Color(0xff267b9b) : const Color(0xff6aadbd);
     text(c, '終點站：', 10, 330, 60, white);
     text(
       c,
@@ -1343,7 +1369,7 @@ class StopsPainter extends CustomPainter {
       10,
       505,
       60,
-      const Color(0xff39a68d),
+      light ? const Color(0xff14745a) : const Color(0xff3fab8b),
     );
     if (data.showClock) {
       text(
@@ -1352,7 +1378,7 @@ class StopsPainter extends CustomPainter {
         10,
         555,
         48,
-        const Color(0xff39a68d),
+        light ? const Color(0xff14745a) : const Color(0xff3fab8b),
       );
     }
     c.save();
@@ -1365,7 +1391,11 @@ class StopsPainter extends CustomPainter {
       at++
     ) {
       final x = 716 + slot * (at - column + .5),
-          color = at == data.index ? const Color(0xffffb34f) : white;
+          color = at == data.index
+              ? (data.theme == 1
+                    ? const Color(0xffffb34d)
+                    : const Color(0xffbd629d))
+              : white;
       paint
         ..color = Colors.black
         ..style = PaintingStyle.fill;
@@ -1392,13 +1422,13 @@ class StopsPainter extends CustomPainter {
       c.save();
       c.clipRect(Rect.fromLTRB(x - slot / 2, 46, x + slot / 2, 550));
       for (int j = 0; j < chars.length; j++) {
-        text(c, chars[j], x - font / 2, 82 + j * font - offset, font, color);
+        stationGlyph(c, chars[j], x, 50 + j * font - offset, font, color);
         if (height > 504) {
-          text(
+          stationGlyph(
             c,
             chars[j],
-            x - font / 2,
-            82 + j * font - offset + cycle,
+            x,
+            50 + j * font - offset + cycle,
             font,
             color,
           );
