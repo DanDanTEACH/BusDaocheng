@@ -941,7 +941,13 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
     final hints = ['時鐘、秒數與播放畫面主題', '站名音檔與自動播放間隔', '主題、強調色與背景照片'];
     final items = <Widget>[];
     Widget setting(String name, String summary, VoidCallback action) =>
-        ListTile(title: Text(name), subtitle: Text(summary), onTap: action);
+        ListTile(
+          minVerticalPadding: 16,
+          contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+          title: Text(name, style: const TextStyle(fontSize: 17)),
+          subtitle: Text(summary, style: const TextStyle(fontSize: 14)),
+          onTap: action,
+        );
     if (section < 0) {
       for (var i = 0; i < 3; i++) {
         final value = i;

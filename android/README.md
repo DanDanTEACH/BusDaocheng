@@ -1,6 +1,6 @@
 # 原生 Android 舊版原始碼
 
-目前版本已移植至 [Flutter](../flutter_app/README.md)。這裡保留「公車報站&導乘 0.02」移植前的原生 Android Java 原始碼，包含 APP、桌面小工具、背景播報服務與所需素材，沒有使用 Flutter。
+目前版本已移植至 [Flutter](../flutter_app/README.md)。這裡保留「公車報站&導乘 0.03」移植前的原生 Android Java 原始碼，包含 APP、桌面小工具、背景播報服務與所需素材，沒有使用 Flutter。
 
 ## 檔案
 
@@ -20,7 +20,7 @@
 .\build.ps1 -Sdk 'C:\Android\Sdk' -JavaHome 'C:\Program Files\Android\Android Studio\jbr'
 ```
 
-請將兩個路徑改成自己的安裝位置。腳本會編譯資源與 Java、產生 DEX，並在 `build/` 產生使用本機測試金鑰簽署的 `Bus-Announcement-Guide-0.02-debug.apk`。
+請將兩個路徑改成自己的安裝位置。腳本會編譯資源與 Java、產生 DEX，並在 `build/` 產生使用本機測試金鑰簽署的 `Bus-Announcement-Guide-0.03-debug.apk`。
 
 正式發布的簽署金鑰不在儲存庫中。本機編譯 APK 的簽章與 Release APK 不同，無法直接覆蓋安裝正式版；如需測試，請使用另一台測試裝置，或先備份設定再移除正式版。
 
