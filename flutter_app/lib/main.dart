@@ -23,6 +23,50 @@ int categoryOf(String label) {
   return 0;
 }
 
+int? lihaoVoiceForRoute(String id) => const {
+  '3020A': 11,
+  '2230A': 15,
+  '3022': 71,
+  'EB0111003500': 9,
+  'EB0111005500': 75,
+  'EB0111005520': 76,
+  'EB0112002700': 1,
+  'EB0114002000': 37,
+  'EB0100012900': 53,
+  'EB0151000600': 13,
+  'EB0151000700': 40,
+  'EB0151000800': 35,
+  'EB0151000900': 22,
+  'EB0151001400': 50,
+  'EB0151002100': 30,
+  'EB0151002200': 26,
+  'EB0151002300': 10,
+  'EB0151002500': 25,
+  'EB0151002600': 39,
+  'EB0151002800': 61,
+  'EB0151003600': 28,
+  'EB0100021600': 16,
+  'EB0100021800': 23,
+  'EB0100021820': 24,
+  'EB0100021830': 29,
+  'EB0152001600': 33,
+  'EB0152002000': 63,
+  'EB0152003200': 67,
+  'EB0152000B00': 32,
+  'EB0100023000': 10,
+  'EB0153000600': 19,
+  'EB0153001500': 62,
+  'EB0100026590': 3,
+  'EB0100026520': 4,
+  'EB0161000900': 5,
+  'EB0100028800': 14,
+  'EB0100052900': 44,
+  'EB0100055000': 51,
+  'EB0100055100': 6,
+  'EB0100060200': 18,
+  'EB0400083900': 45,
+}[id];
+
 class BusRoute {
   final Map<String, dynamic> json;
   BusRoute(this.json);
@@ -208,6 +252,13 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
     if (baolu && !baoluArrivalPhase) {
       // 寶錄第一階段：910=下一站。
       await playFile('phone/baolu/next.mp3');
+    } else if (!baolu) {
+      final voice = lihaoVoiceForRoute(route.id);
+      await playFile(
+        voice == null
+            ? 'phone/lihao_prompts/voice13-next.wav'
+            : 'phone/lihao_prompts/voice$voice-${baoluArrivalPhase ? 'arriving' : 'next'}.wav',
+      );
     }
     final primary = (baolu ? baoluRecordings[stops[index]] : recordings[stops[index]]) as String?;
     final fallback = (baolu ? recordings[stops[index]] : baoluRecordings[stops[index]]) as String?;
@@ -225,7 +276,7 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
     }
     if (!mounted) return;
     if (automatic) {
-      if (baolu && !baoluArrivalPhase) {
+      if (!baoluArrivalPhase) {
         setState(() => baoluArrivalPhase = true);
         advance?.cancel();
         advance = Timer(
@@ -280,50 +331,7 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
       await playFile('phone/baolu/travel-safe.mp3');
     } else {
       // 立皓每個 voice 資料夾的 voc001 對應各路線；目前路線表的索引如下。
-      const voiceByRoute = {
-        '3020A': 11,
-        '2230A': 15,
-        '3022': 71,
-        'EB0111003500': 9,
-        'EB0111005500': 75,
-        'EB0111005520': 76,
-        'EB0112002700': 1,
-        'EB0114002000': 37,
-        'EB0100012900': 53,
-        'EB0151000600': 13,
-        'EB0151000700': 40,
-        'EB0151000800': 35,
-        'EB0151000900': 22,
-        'EB0151001400': 50,
-        'EB0151002100': 30,
-        'EB0151002200': 26,
-        'EB0151002300': 10,
-        'EB0151002500': 25,
-        'EB0151002600': 39,
-        'EB0151002800': 61,
-        'EB0151003600': 28,
-        'EB0100021600': 16,
-        'EB0100021800': 23,
-        'EB0100021820': 24,
-        'EB0100021830': 29,
-        'EB0152001600': 33,
-        'EB0152002000': 63,
-        'EB0152003200': 67,
-        'EB0152000B00': 32,
-        'EB0100023000': 10,
-        'EB0153000600': 19,
-        'EB0153001500': 62,
-        'EB0100026590': 3,
-        'EB0100026520': 4,
-        'EB0161000900': 5,
-        'EB0100028800': 14,
-        'EB0100052900': 44,
-        'EB0100055000': 51,
-        'EB0100055100': 6,
-        'EB0100060200': 18,
-        'EB0400083900': 45,
-      };
-      final voice = voiceByRoute[route.id];
+      final voice = lihaoVoiceForRoute(route.id);
       await playFile(
         voice == null
             ? 'phone/audio/lihao-welcome.wav'
