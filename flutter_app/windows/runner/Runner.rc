@@ -69,7 +69,7 @@ IDI_APP_ICON            ICON                    "resources\\app_icon.ico"
 #if defined(FLUTTER_VERSION)
 #define VERSION_AS_STRING FLUTTER_VERSION
 #else
-#define VERSION_AS_STRING "0.03"
+#define VERSION_AS_STRING "0.04"
 #endif
 
 VS_VERSION_INFO VERSIONINFO
@@ -96,7 +96,7 @@ BEGIN
             VALUE "LegalCopyright", "Copyright (C) 2026 com.led.demo. All rights reserved." "\0"
             VALUE "OriginalFilename", "bus_daocheng.exe" "\0"
             VALUE "ProductName", "公車報站&導乘" "\0"
-            VALUE "ProductVersion", "0.03" "\0"
+            VALUE "ProductVersion", "0.04" "\0"
         END
     END
     BLOCK "VarFileInfo"
