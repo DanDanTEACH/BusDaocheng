@@ -906,7 +906,11 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
                 if (d.mounted) Navigator.pop(d);
                 if (begin) {
                   setState(() => automatic = true);
-                  announce();
+                  // 自動播報開始時先播放旅途提示，完成後立即接第一站。
+                  if (integer('audioBrand', 0) == 1) {
+                    await playFile('phone/baolu/travel-safe.mp3');
+                  }
+                  await announce();
                 }
               },
               child: const Text('確認'),
