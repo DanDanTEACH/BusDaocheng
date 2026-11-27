@@ -260,9 +260,6 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
       index = 0;
     });
     await publish();
-    if (integer('audioBrand', 0) == 1) {
-      await playFile('phone/baolu/welcome.mp3');
-    }
     await SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
