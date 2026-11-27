@@ -1,6 +1,8 @@
 name: Build and deploy web
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
 permissions:
   contents: write
   pages: write
@@ -35,4 +37,23 @@ jobs:
       - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Flutter
+        run: |
+          git clone --depth 1 --branch 3.50.0 https://github.com/flutter/flutter.git "$RUNNER_TEMP/flutter"
+          echo "$RUNNER_TEMP/flutter/bin" >> "$GITHUB_PATH"
+      - name: Build Android APK
+        working-directory: flutter_app
+        run: |
+          flutter pub get
+          flutter build apk --release
+      - name: Upload Android APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Bus-Announcement-Guide-0.04-android
+          path: flutter_app/build/app/outputs/flutter-apk/app-release.apk
 
