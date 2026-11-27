@@ -77,7 +77,8 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
       active = false,
       playing = false,
       speaking = false,
-      automatic = false;
+      automatic = false,
+      baoluArrivalPhase = false;
   String query = '', status = '', error = '';
   Timer? advance;
   int audioGeneration = 0;
@@ -177,6 +178,7 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
   Future<void> stop() async {
     advance?.cancel();
     automatic = false;
+    baoluArrivalPhase = false;
     audioGeneration++;
     await bridge.invokeMethod('stop');
     if (mounted) setState(() => speaking = false);
@@ -200,16 +202,34 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
 
   Future<void> announce() async {
     final file = recordings[stops[index]] as String?;
+    final baolu = integer('audioBrand', 0) == 1;
+    if (baolu && !baoluArrivalPhase) {
+      // 寶錄第一階段：910=下一站。
+      await playFile('phone/baolu/next.mp3');
+    }
     if (file != null && file.isNotEmpty) {
       await playFile('phone/audio/$file');
     } else {
       setState(() => status = '此站尚缺錄音，仍可繼續切站');
     }
+    if (baolu && baoluArrivalPhase) {
+      // 寶錄第二階段：同站再次播報後播放 911=到了。
+      await playFile('phone/baolu/arrived.mp3');
+    }
     if (!mounted) return;
     if (automatic) {
-      if (index >= stops.length - 1) {
+      if (baolu && !baoluArrivalPhase) {
+        setState(() => baoluArrivalPhase = true);
+        advance?.cancel();
+        advance = Timer(
+          Duration(seconds: integer('autoDelaySeconds', 1)),
+          announce,
+        );
+      } else if (index >= stops.length - 1) {
         setState(() => automatic = false);
+        baoluArrivalPhase = false;
       } else {
+        baoluArrivalPhase = false;
         advance?.cancel();
         advance = Timer(
           Duration(seconds: integer('autoDelaySeconds', 1)),
@@ -225,6 +245,7 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
       index = (index + delta).clamp(0, stops.length - 1);
       bellState = 0;
       status = '';
+      baoluArrivalPhase = false;
     });
     await bridge.invokeMethod('bellState', 0);
     await publish();
@@ -239,6 +260,10 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
       index = 0;
     });
     await publish();
+    if (integer('audioBrand', 0) == 1) {
+      await playFile('phone/baolu/welcome.mp3');
+      await playFile('phone/baolu/welcome_safe.mp3');
+    }
     await SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
@@ -986,8 +1011,7 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
             c,
             '站名音檔廠牌',
             'audioBrand',
-            ['立皓', '寶錄（尚未啟用）'],
-            disabled: {1},
+            ['立皓', '寶錄'],
           ),
         ),
         setting(
