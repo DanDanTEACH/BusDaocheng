@@ -5,6 +5,9 @@ from faster_whisper import WhisperModel
 root = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(r'C:\Users\w1048\Desktop\公車LED\大南\黃機音檔\0511')
 out = Path(sys.argv[2]) if len(sys.argv) > 2 else Path('baolu_transcripts.csv')
 files = sorted(p for p in root.rglob('*') if p.suffix.lower() in {'.mp3','.wav','.m4a','.aac','.flac'})
+only_lang = os.environ.get('BAOLU_ONLY_LANGUAGE')
+if only_lang:
+    files = [p for p in files if p.parent.name == only_lang]
 limit = int(os.environ.get('BAOLU_BATCH_LIMIT', '0'))
 offset = int(os.environ.get('BAOLU_BATCH_OFFSET', '0'))
 if limit > 0:
