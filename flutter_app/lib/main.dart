@@ -209,9 +209,13 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
       // 寶錄第一階段：910=下一站。
       await playFile('phone/baolu/next.mp3');
     }
-    final file = (baolu ? baoluRecordings[stops[index]] : recordings[stops[index]]) as String?;
-    if (file != null && file.isNotEmpty) {
-      await playFile(baolu ? 'phone/baolu_stations/$file' : 'phone/audio/$file');
+    final primary = (baolu ? baoluRecordings[stops[index]] : recordings[stops[index]]) as String?;
+    final fallback = (baolu ? recordings[stops[index]] : baoluRecordings[stops[index]]) as String?;
+    if (primary != null && primary.isNotEmpty) {
+      await playFile(baolu ? 'phone/baolu_stations/$primary' : 'phone/audio/$primary');
+    } else if (fallback != null && fallback.isNotEmpty) {
+      await playFile(baolu ? 'phone/audio/$fallback' : 'phone/baolu_stations/$fallback');
+      if (mounted) setState(() => status = baolu ? '寶錄缺檔，改播立皓音檔' : '立皓缺檔，改播寶錄音檔');
     } else {
       setState(() => status = '此站尚缺錄音，仍可繼續切站');
     }
