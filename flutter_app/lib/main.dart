@@ -228,6 +228,14 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
       } else if (index >= stops.length - 1) {
         setState(() => automatic = false);
         baoluArrivalPhase = false;
+        if (baolu) {
+          // 寶錄最後一站完成後，延遲 10 秒播放結束提示音。
+          advance?.cancel();
+          advance = Timer(
+            const Duration(seconds: 10),
+            () => playFile('phone/baolu/end-route.mp3'),
+          );
+        }
       } else {
         baoluArrivalPhase = false;
         advance?.cancel();
