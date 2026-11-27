@@ -1162,11 +1162,8 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
     builder: (c, size) {
       final theme = integer('playbackTheme', 0);
       return ColoredBox(
-        color: [
-          Colors.black,
-          const Color(0xff071f38),
-          const Color(0xfff4f6fa),
-        ][theme],
+        // 預覽／播放顯示區沿用原版純黑底，避免外層主題色滲入站牌畫面。
+        color: Colors.black,
         child: Column(
           children: [
             Expanded(
