@@ -20,6 +20,8 @@ for city in cities:
             res = requests.get(url, headers=headers, timeout=180)
             if res.status_code != 429: break
             time.sleep(10 * (attempt + 1))
+        if res.status_code == 400:
+            print('skip unavailable', city, kind, flush=True); continue
         res.raise_for_status()
         target.write_text(json.dumps(res.json(), ensure_ascii=False), encoding='utf-8')
         time.sleep(2)
