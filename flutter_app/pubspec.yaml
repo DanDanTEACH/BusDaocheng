@@ -22,6 +22,7 @@ flutter:
   assets:
     - assets/phone/
     - assets/phone/audio/
+    - assets/phone/lihao_welcome/
     - assets/phone/baolu/
     - assets/phone/bells/
     - assets/phone/catalog/

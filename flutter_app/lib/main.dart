@@ -264,7 +264,14 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
     if (integer('audioBrand', 0) == 1) {
       await playFile('phone/baolu/travel-safe.mp3');
     } else {
-      await playFile('phone/audio/lihao-welcome.wav');
+      // 立皓每個 voice 資料夾的 voc001 對應各路線；目前路線表的索引如下。
+      const voiceByRoute = {'3020A': 11, '2230A': 15, '3022': 71};
+      final voice = voiceByRoute[route.id];
+      await playFile(
+        voice == null
+            ? 'phone/audio/lihao-welcome.wav'
+            : 'phone/lihao_welcome/voice$voice.wav',
+      );
     }
     await SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
