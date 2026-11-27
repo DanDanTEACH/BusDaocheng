@@ -1,7 +1,7 @@
 name: bus_daocheng
 description: 公車報站與導乘 Flutter multiplatform application
 publish_to: none
-version: 0.0.5+48
+version: 0.0.6+49
 environment:
   sdk: ^3.14.0
 dependencies:
@@ -24,6 +24,8 @@ flutter:
     - assets/phone/audio/
     - assets/phone/lihao_welcome/
     - assets/phone/baolu/
+    - assets/phone/baolu_stations/
+    - assets/phone/baolu_audio.json
     - assets/phone/bells/
     - assets/phone/catalog/
     - assets/phone/external/

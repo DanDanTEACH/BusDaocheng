@@ -61,7 +61,7 @@ class BusApp extends StatefulWidget {
 class BusAppState extends State<BusApp> with WidgetsBindingObserver {
   List<BusRoute> routes = [];
   List<dynamic> catalog = [];
-  Map<String, dynamic> recordings = {}, external = {}, prefs = {};
+  Map<String, dynamic> recordings = {}, baoluRecordings = {}, external = {}, prefs = {};
   int tab = 0,
       section = -1,
       category = 0,
@@ -111,6 +111,9 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
           .toList();
       catalog = jsonDecode(data['catalog']);
       recordings = jsonDecode(data['audio']);
+      baoluRecordings = jsonDecode(
+        await rootBundle.loadString('assets/phone/baolu_audio.json'),
+      );
       external = jsonDecode(data['external']);
       prefs = Map<String, dynamic>.from(data['preferences']);
       dynamicAccent = data['accent'];
@@ -201,14 +204,14 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
   }
 
   Future<void> announce() async {
-    final file = recordings[stops[index]] as String?;
     final baolu = integer('audioBrand', 0) == 1;
     if (baolu && !baoluArrivalPhase) {
       // 寶錄第一階段：910=下一站。
       await playFile('phone/baolu/next.mp3');
     }
+    final file = (baolu ? baoluRecordings[stops[index]] : recordings[stops[index]]) as String?;
     if (file != null && file.isNotEmpty) {
-      await playFile('phone/audio/$file');
+      await playFile(baolu ? 'phone/baolu_stations/$file' : 'phone/audio/$file');
     } else {
       setState(() => status = '此站尚缺錄音，仍可繼續切站');
     }
