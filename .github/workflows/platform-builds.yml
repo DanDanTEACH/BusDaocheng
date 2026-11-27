@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+    tags: ['0.04']
 permissions:
   contents: write
   pages: write
@@ -56,4 +57,39 @@ jobs:
         with:
           name: Bus-Announcement-Guide-0.04-android
           path: flutter_app/build/app/outputs/flutter-apk/app-release.apk
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [web, android]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: Bus-Announcement-Guide-0.04-android
+          path: release
+      - name: Install Flutter
+        run: |
+          git clone --depth 1 --branch 3.50.0 https://github.com/flutter/flutter.git "$RUNNER_TEMP/flutter"
+          echo "$RUNNER_TEMP/flutter/bin" >> "$GITHUB_PATH"
+      - name: Build web archive
+        working-directory: flutter_app
+        run: |
+          flutter pub get
+          flutter build web --release --base-href /BusDaocheng/app/
+          cd build/web
+          zip -r ../../BusDaocheng-0.04-web.zip .
+      - name: Rename APK
+        run: mv release/app-release.apk release/Bus-Announcement-Guide-0.04.apk
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: 公車報站&導乘 ${{ github.ref_name }}
+          generate_release_notes: true
+          files: |
+            release/Bus-Announcement-Guide-0.04.apk
+            flutter_app/BusDaocheng-0.04-web.zip
 
