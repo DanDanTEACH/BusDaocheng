@@ -260,9 +260,11 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
       index = 0;
     });
     await publish();
-    // 寶錄開啟路線時只播放 997：祝您旅途愉快，一路平安。
+    // 開啟路線時播放所選音檔品牌的提示語。
     if (integer('audioBrand', 0) == 1) {
       await playFile('phone/baolu/travel-safe.mp3');
+    } else {
+      await playFile('phone/audio/lihao-welcome.wav');
     }
     await SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
