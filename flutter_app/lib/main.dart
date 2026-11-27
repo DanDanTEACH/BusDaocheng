@@ -106,6 +106,22 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
   List<BusRoute> routes = [];
   List<dynamic> catalog = [];
   Map<String, dynamic> recordings = {}, baoluRecordings = {}, external = {}, prefs = {};
+  String? baoluAudioForStation(String station) {
+    final exact = baoluRecordings[station];
+    if (exact is String) return exact;
+    String normalize(String value) => value
+        .replaceAll(RegExp(r'[\s　（）()\-—–·．。，、,./]'), '')
+        .toLowerCase();
+    final target = normalize(station);
+    if (target.isEmpty) return null;
+    for (final entry in baoluRecordings.entries) {
+      final key = normalize(entry.key);
+      if (key == target || key.contains(target) || target.contains(key)) {
+        return entry.value as String?;
+      }
+    }
+    return null;
+  }
   int tab = 0,
       section = -1,
       category = 0,
@@ -260,7 +276,7 @@ class BusAppState extends State<BusApp> with WidgetsBindingObserver {
             : 'phone/lihao_prompts/voice$voice-${baoluArrivalPhase ? 'arriving' : 'next'}.wav',
       );
     }
-    final primary = (baolu ? baoluRecordings[stops[index]] : recordings[stops[index]]) as String?;
+    final primary = (baolu ? baoluAudioForStation(stops[index]) : recordings[stops[index]]) as String?;
     final fallback = (baolu ? recordings[stops[index]] : baoluRecordings[stops[index]]) as String?;
     if (primary != null && primary.isNotEmpty) {
       await playFile(baolu ? 'phone/baolu_stations/$primary' : 'phone/audio/$primary');
